@@ -9,3 +9,29 @@
 <p>
   <a href="/places/new">New place</a>
 </p>
+
+    <% for place in @places %>
+      <% user = User.find_by({ "id" => place["user_id"] }) %>
+      <div class="card mt-3">
+        <div class="card-body">
+          <div class="d-flex">
+            <div>
+              <h6 class="card-title mb-1"><%= user["first_name"] %></h6>
+              <small class="text-muted">@<%= user["username"] %></small>
+            </div>
+          </div>
+          <p class="card-text mt-3">
+            <%= post["body"] %>
+          </p>
+          <div class="d-flex justify-content-between">
+            <small class="text-muted"><%= post["created_at"].strftime("%B %d, %Y") %></small>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+
+
+  </div>
+  <div class="col-lg-4"></div>
+</div>
